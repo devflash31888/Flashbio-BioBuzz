@@ -7,6 +7,8 @@ import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
+import org.firstinspires.ftc.teamcode.config.Alliance;
+import org.firstinspires.ftc.teamcode.config.AllianceState;
 import org.firstinspires.ftc.teamcode.config.RobotConfig;
 
 import dev.nextftc.hardware.actuators.NextServo;
@@ -30,7 +32,6 @@ public class Vision implements Mechanism {
     private boolean pollenVisible = false;
     private double pollenTx = 0;
     private double pollenTy = 0;
-    private double getPollenTy = 0;
     private long pollenSeenSinceMs = -1;
 
     public void init(HardwareMap hardwareMap) {
@@ -86,8 +87,12 @@ public class Vision implements Mechanism {
     }
 
     private static boolean isAllowedTag(int id) {
-        for(int allowed : RobotConfig.Vision.allowTagIds) {
-            if(allowed == id) return true;
+        int[] allowedTags = (AllianceState.current == Alliance.RED)
+                ? RobotConfig.Vision.allowTagIdsRed
+                : RobotConfig.Vision.allowTagIdsBlue;
+
+        for (int allowed : allowedTags) {
+            if (allowed == id) return true;
         }
         return false;
     }

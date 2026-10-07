@@ -72,11 +72,20 @@ public class RobotConfig {
         public static double servoPollenPosition = 0.2; //ajustar
         public static double servoSettleMs = 300; //ajustar
 
-        public static int[] allowTagIds = {0, 0}; //ajustar
-        public static String pollenClassName = "pollen";
+        public static int[] allowTagIdsBlue = {0, 0, 0, 0}; //ajustar
+        public static int[] allowTagIdsRed = {0, 0, 0, 0}; //ajustar
+        public static String pollenClassName = "Yellow";
 
         public static double maxStalenessMs = 100;
         public static double pollenStabelMs = 100;
         public static int pollRateHz = 100;
+    }
+
+    @Configurable
+    public static class FlowerRemover {
+        public static double downPosition = 0.8; //ajustar pos down
+        public static double upPosition = 0.2; //ajustar pos default
+        public static double moveTimeMs = 250; //ajustar (tempo que demora para descer)
+        public static boolean invertRight = false;
     }
 }

@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import org.firstinspires.ftc.teamcode.config.RobotConfig;
 import org.firstinspires.ftc.teamcode.subsystems.DriveTrain;
+import org.firstinspires.ftc.teamcode.subsystems.FlowerRemover;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.Shooter;
 import org.firstinspires.ftc.teamcode.subsystems.ShooterGate;
@@ -21,6 +22,7 @@ public class Robot implements NextRobot {
     Intake intake = new Intake();
     ShooterGate shooterGate = new ShooterGate();
     Vision vision = new Vision();
+    FlowerRemover remover = new FlowerRemover();
 
     public Robot() {
         shooter.setPoseSupplier(drivetrain::getPose);
@@ -28,6 +30,6 @@ public class Robot implements NextRobot {
 
     @Override
     public Set<Mechanism> getMechanisms() {
-        return Set.of(drivetrain, shooter, intake, shooterGate, vision);
+        return Set.of(drivetrain, shooter, intake, shooterGate, vision, remover);
     }
 }
